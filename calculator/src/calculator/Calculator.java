@@ -13,6 +13,11 @@ public class Calculator {
 		}
 		String expression = args[0];
 
+		int result = calculate(expression);
+		System.out.println("result: " + result);
+	}
+
+	private static int calculate(String expression) {
 		// split expression up into tokens
 		String[] tokens = expression.split(" ");
 
@@ -26,7 +31,7 @@ public class Calculator {
 
 		// the result is the last thing left on the stack
 		int result = stack.pop();
-		System.out.println("result: " + result);
+		return result;
 	}
 
 	private static boolean handleNumber(Stack<Integer> stack, String token) {

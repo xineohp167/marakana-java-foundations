@@ -19,30 +19,42 @@ public class Calculator {
 		// for each token in the expression ...
 		Stack<Integer> stack = new Stack<Integer>();
 		for (String token : tokens) {
-			try {
-				// if the token is an integer, push it
-				int number = Integer.parseInt(token);
-				stack.push(number);
-			} catch (NumberFormatException e) {
-				// if the token is an operator, pop two numbers,
-				// perform the op and push the result
-				int rhs = stack.pop(), lhs = stack.pop();
-				if (token.equals("+")) {
-					stack.push(lhs + rhs);
-				} else if (token.equals("-")) {
-					stack.push(lhs - rhs);
-				} else if (token.equals("*")) {
-					stack.push(lhs * rhs);
-				} else if (token.equals("/")) {
-					stack.push(lhs / rhs);
-				} else {
-					throw new IllegalArgumentException("garbage in expression");
-				}
+			if (!handleNumber(stack, token) && !handleOperator(stack, token)) {
+				throw new IllegalArgumentException("garbage");
 			}
 		}
 
 		// the result is the last thing left on the stack
 		int result = stack.pop();
 		System.out.println("result: " + result);
+	}
+
+	private static boolean handleNumber(Stack<Integer> stack, String token) {
+		try {
+			// if the token is an integer, push it
+			int number = Integer.parseInt(token);
+			stack.push(number);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+
+	private static boolean handleOperator(Stack<Integer> stack, String token) {
+		// if the token is an operator, pop two numbers,
+		// perform the op and push the result
+		int rhs = stack.pop(), lhs = stack.pop();
+		if (token.equals("+")) {
+			stack.push(lhs + rhs);
+		} else if (token.equals("-")) {
+			stack.push(lhs - rhs);
+		} else if (token.equals("*")) {
+			stack.push(lhs * rhs);
+		} else if (token.equals("/")) {
+			stack.push(lhs / rhs);
+		} else {
+			return false;
+		}
+		return true;
 	}
 }

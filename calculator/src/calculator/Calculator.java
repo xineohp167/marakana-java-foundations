@@ -19,7 +19,7 @@ public class Calculator {
 		// for each token in the expression ...
 		Stack<Integer> stack = new Stack<Integer>();
 		for (String token : tokens) {
-			if (!handleNumber(stack, token) && !handleOperator(stack, token)) {
+			if (!handleOperator(stack, token) && !handleNumber(stack, token)) {
 				throw new IllegalArgumentException("garbage");
 			}
 		}
@@ -43,14 +43,17 @@ public class Calculator {
 	private static boolean handleOperator(Stack<Integer> stack, String token) {
 		// if the token is an operator, pop two numbers,
 		// perform the op and push the result
-		int rhs = stack.pop(), lhs = stack.pop();
 		if (token.equals("+")) {
+			int rhs = stack.pop(), lhs = stack.pop();
 			stack.push(lhs + rhs);
 		} else if (token.equals("-")) {
+			int rhs = stack.pop(), lhs = stack.pop();
 			stack.push(lhs - rhs);
 		} else if (token.equals("*")) {
+			int rhs = stack.pop(), lhs = stack.pop();
 			stack.push(lhs * rhs);
 		} else if (token.equals("/")) {
+			int rhs = stack.pop(), lhs = stack.pop();
 			stack.push(lhs / rhs);
 		} else {
 			return false;

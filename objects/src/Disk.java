@@ -1,4 +1,4 @@
-public class Disk {
+public class Disk implements Storage {
 	private final int size;
 	private final String type;
 

@@ -4,16 +4,14 @@ public class Laptop {
 
 	private final String model;
 	private final int size;
-	private final Memory[] memory;
-	private final Disk[] disks;
+	private final Storage[] storage;
 	private String[] applications;
 	private boolean on;
 
-	public Laptop(String model, int size, Memory[] memory, Disk[] disks) {
+	public Laptop(String model, int size, Storage[] storage) {
 		this.model = model;
 		this.size = size;
-		this.memory = memory;
-		this.disks = disks;
+		this.storage = storage;
 	}
 
 	public void turnOn() {
@@ -36,12 +34,8 @@ public class Laptop {
 		return size;
 	}
 
-	public Memory[] getMemory() {
-		return memory;
-	}
-
-	public Disk[] getDisks() {
-		return disks;
+	public Storage[] getStorage() {
+		return storage;
 	}
 
 	public String[] getApplications() {
@@ -51,15 +45,22 @@ public class Laptop {
 	public void setApplications(String[] applications) {
 		this.applications = applications;
 	}
+	
+	public int totalStorage(){
+		int total = 0;
+		for (Storage s : storage) {
+			total += s.getSize();
+		}
+		return total;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Arrays.hashCode(disks);
-		result = prime * result + Arrays.hashCode(memory);
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
 		result = prime * result + size;
+		result = prime * result + Arrays.hashCode(storage);
 		return result;
 	}
 
@@ -72,10 +73,6 @@ public class Laptop {
 		if (getClass() != obj.getClass())
 			return false;
 		Laptop other = (Laptop) obj;
-		if (!Arrays.equals(disks, other.disks))
-			return false;
-		if (!Arrays.equals(memory, other.memory))
-			return false;
 		if (model == null) {
 			if (other.model != null)
 				return false;
@@ -83,8 +80,12 @@ public class Laptop {
 			return false;
 		if (size != other.size)
 			return false;
+		if (!Arrays.equals(storage, other.storage))
+			return false;
 		return true;
 	}
+
+	
 	
 	
 }

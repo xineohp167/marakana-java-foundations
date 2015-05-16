@@ -1,4 +1,6 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -7,13 +9,14 @@ public class Laptop {
 	private final String model;
 	private final int size;
 	private final List<Storage> storage;
-	private Set<String> applications;
+	private final Set<String> applications = new HashSet<String>();
 	private boolean on;
 
 	public Laptop(String model, int size, List<Storage> storage) {
 		this.model = model;
 		this.size = size;
-		this.storage = storage;
+		// defensive copy
+		this.storage = new ArrayList<Storage>(storage);
 	}
 
 	public void turnOn() {
@@ -37,15 +40,19 @@ public class Laptop {
 	}
 
 	public List<Storage> getStorage() {
-		return storage;
+		return Collections.unmodifiableList(storage);
 	}
 
 	public Set<String> getApplications() {
-		return applications;
+		return Collections.unmodifiableSet(applications);
 	}
 
-	public void setApplications(Set<String> applications) {
-		this.applications = applications;
+	public void installApplication(String application){
+		applications.add(application);
+	}
+	
+	public void uninstallApplication(String application){
+		applications.remove(application);
 	}
 	
 	public int totalStorage(){

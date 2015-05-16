@@ -11,6 +11,7 @@ public class Disk extends Storage {
 		return speed;
 	}
 
+	@Override
 	public int getSize() {
 		return size;
 	}

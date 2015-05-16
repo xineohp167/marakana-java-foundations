@@ -20,13 +20,13 @@ public class ObjectsTest {
 		storage.add(new Memory(4096, "DIMM"));
 		storage.add(new Disk(512, "SATA", 6));
 		
-		Laptop lappy = new Laptop("MacBook Pro", 15, storage);
+		Laptop lappy = new Laptop("MacBook Pro", storage, 15);
 		
 		lappy.installApplication("Eclipse");
 		lappy.installApplication("BitTorrent");
 		
 		assertEquals(520, lappy.totalStorage());
-		Laptop lap2 = new Laptop("Dell", 15, storage);
+		Laptop lap2 = new Laptop("Dell", storage, 15);
 
 		lappy.turnOn();
 		lap2.turnOn();

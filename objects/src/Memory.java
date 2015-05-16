@@ -6,6 +6,7 @@ public class Memory extends Storage{
 		super(size, type);
 	}
 
+	@Override
 	public int getSize() {
 		return size / 1024;
 	}

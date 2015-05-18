@@ -28,10 +28,10 @@ public class ObjectsTest {
 		lappy.turnOn();
 		lap2.turnOn();
 
-		LaptopBag bag = new LaptopBag(15);
+		LaptopBag bag = new LaptopBag(15, Color.BLACK);
 		bag.insertLaptop(lappy);
 		
-		LaptopBag bag2 = new LaptopBag(17);
+		LaptopBag bag2 = new LaptopBag(17, Color.RED);
 		bag2.insertLaptop(lap2);
 		
 		System.out.println(bag);

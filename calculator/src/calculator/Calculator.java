@@ -2,12 +2,6 @@ package calculator;
 
 import java.util.Stack;
 
-import operator.Add;
-import operator.Divide;
-import operator.Multiply;
-import operator.Operator;
-import operator.Subtract;
-
 public class Calculator {
 
 	public static void main(String[] args) {
@@ -56,13 +50,13 @@ public class Calculator {
 		// perform the op and push the result
 		Operator op;
 		if (token.equals("+")) {
-			op = new Add();
+			op = Operator.ADD;
 		} else if (token.equals("-")) {
-			op = new Subtract();
+			op = Operator.SUBTRACT;
 		} else if (token.equals("*")) {
-			op = new Multiply();
+			op = Operator.MULTIPLY;
 		} else if (token.equals("/")) {
-			op = new Divide();
+			op = Operator.DIVIDE;
 		} else {
 			return false;
 		}

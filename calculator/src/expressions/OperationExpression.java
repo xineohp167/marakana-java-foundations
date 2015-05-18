@@ -3,25 +3,29 @@ package expressions;
 import calculator.Operator;
 
 public class OperationExpression implements Expression {
-	
+
 	private final Expression lhs, rhs;
 	private final Operator op;
+
 	public OperationExpression(Expression lhs, Expression rhs, Operator op) {
 		super();
 		this.lhs = lhs;
 		this.rhs = rhs;
 		this.op = op;
 	}
+
 	public Expression getLhs() {
 		return lhs;
 	}
+
 	public Expression getRhs() {
 		return rhs;
 	}
+
 	public Operator getOp() {
 		return op;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -31,7 +35,7 @@ public class OperationExpression implements Expression {
 		result = prime * result + rhs.hashCode();
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -49,10 +53,14 @@ public class OperationExpression implements Expression {
 			return false;
 		return true;
 	}
+
 	@Override
 	public int getValue() {
 		return op.operate(lhs.getValue(), rhs.getValue());
 	}
-
 	
+	public String toString(){
+		return String.format("(%s %s %s)", lhs, op, rhs);
+	}
+
 }

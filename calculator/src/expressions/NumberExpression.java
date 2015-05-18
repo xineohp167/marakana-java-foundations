@@ -12,6 +12,10 @@ public class NumberExpression implements Expression {
 	public int getValue() {
 		return value;
 	}
+	
+	public String toString(){
+		return String.valueOf(value);
+	}
 
 	@Override
 	public int hashCode() {

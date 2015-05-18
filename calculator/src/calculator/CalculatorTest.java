@@ -72,5 +72,11 @@ public class CalculatorTest {
 	public void calculatorMustNotAcceptGarbage() {
 		Calculator.calculate("garbage");
 	}
+	
+	@Test
+	public void toStringMustConvertExpressionToInfixFormat(){
+		Expression e = Calculator.parse("1 2 3 + -");
+		assertEquals("(1 - (2 + 3))", e.toString());
+	}
 
 }

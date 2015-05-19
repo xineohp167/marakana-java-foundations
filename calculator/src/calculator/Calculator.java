@@ -27,6 +27,7 @@ public class Calculator {
 			return;
 		}
 		String expression = args[0];
+		// String expression = "2147483647 1 +";
 
 		int result = calculate(expression);
 		System.out.println("result: " + result);

@@ -17,6 +17,15 @@ public class ShapesTest {
 			assertEquals(s.getWidth(), s.getHeight());
 		}
 	}
+	
+	@Test
+	public void squaresMustRemainSquare() {
+		for (int i = 0; i < 100; i++) {
+			Square s = arbitrarySquare();
+			s.setWidth(RANDOM.nextInt(50));
+			assertEquals(s.getWidth(), s.getHeight());
+		}
+	}
 
 	
 	private static Square arbitrarySquare() {

@@ -16,6 +16,7 @@ public class Hello {
 //		} catch (ArrayIndexOutOfBoundsException e) {
 //			System.out.println("Hello nobody");
 //		}
+		
 		int[] deck = new int[52];
 		for(int i = 0; i < deck.length; i++){
 			deck[i] = i;
